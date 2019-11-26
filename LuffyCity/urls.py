@@ -14,13 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include,re_path
+from django.urls import path, include, re_path
 from django.views.static import serve
 from LuffyCity import settings
+from django.shortcuts import render
+from django.views import View
+
+
+def index(request):
+    return render(request, "dist/index.html")
+
 
 urlpatterns = [
+    path('index', index),
     path('admin/', admin.site.urls),
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path('api/course/', include("Course.urls")),
     re_path('api/', include("Login.urls")),
     re_path('api/shop/', include("Shopping.urls")),

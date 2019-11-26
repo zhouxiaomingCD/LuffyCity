@@ -31,11 +31,11 @@ class Login(APIView):
             token = str(uuid.uuid4()).replace("-", "")
             try:
                 conn = redis.Redis(connection_pool=POOL)
-                # conn.set(token, user.id, ex=100)
+                # conn.set(token, user.id, ex=36000)
                 conn.set(token, user.id)
                 res.code = 1000
                 res.data = {"username": user.username, "token": token}
             except Exception as e:
                 res.code = 1033
-                res.error = "创建token失败,reason:"+str(e)
+                res.error = "创建token失败,reason:" + str(e)
         return Response(res.dict)

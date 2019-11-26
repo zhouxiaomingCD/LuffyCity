@@ -36,10 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Course.apps.CourseConfig',
+    'Shopping.apps.ShoppingConfig',
     'rest_framework',
 
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -118,6 +118,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "templates/dist/static"),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # 注意:这里配置os的时候,不像配置static的时候要[],这里不需要[]

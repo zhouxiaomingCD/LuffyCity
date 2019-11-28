@@ -34,8 +34,9 @@ class Login(APIView):
                 # conn.set(token, user.id, ex=36000)
                 conn.set(token, user.id)
                 res.code = 1000
-                res.data = {"username": user.username, "token": token}
+                res.data = {"username": user.username, "token": token, "avatar": user.head_img}
             except Exception as e:
                 res.code = 1033
                 res.error = "创建token失败,reason:" + str(e)
         return Response(res.dict)
+sss

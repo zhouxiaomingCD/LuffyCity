@@ -19,17 +19,19 @@ from django.views.static import serve
 from LuffyCity import settings
 from django.shortcuts import render
 from django.views import View
+from AliPay.views import *
 
-
-def index(request):
-    return render(request, "dist/index.html")
+# def index(request):
+#     return render(request, "dist/index.html")
 
 
 urlpatterns = [
-    path('index', index),
+    # path('index', index),
     path('admin/', admin.site.urls),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path('api/course/', include("Course.urls")),
     re_path('api/', include("Login.urls")),
     re_path('api/shop/', include("Shopping.urls")),
+    re_path(r'^pay$', AliPayView.as_view()),
+    re_path(r'^alipay_handler', PayHandlerView.as_view()),
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from alipay.aop.api.DefaultAlipayClient import DefaultAlipayClient
@@ -9,7 +10,7 @@ from alipay.aop.api.request. AlipayTradePrecreateRequest import AlipayTradePrecr
 from alipay.aop.api.domain.AlipayTradePagePayModel import AlipayTradePagePayModel
 from alipay.aop.api.request.AlipayTradePagePayRequest import AlipayTradePagePayRequest
 import time
-
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 # 沙箱环境地址：https://openhome.alipay.com/platform/appDaily.htm?tab=info
 
@@ -36,8 +37,6 @@ def ali_pay():
 
 
 class AliPayView(APIView):
-    def get(self, request):
-        return render(request, "pay.html")
 
     # 生成支付宝自带页面的API
     def post(self, request):

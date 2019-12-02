@@ -37,7 +37,7 @@ class Login(APIView):
         # status = request.session.get(gt.GT_STATUS_SESSION_KEY)
         status = 1
         # user_id = request.session.get("user_id")
-        user_id = "user_id"
+        user_id = "test"
         if status:
             result = gt.success_validate(challenge, validate, seccode, user_id)
         else:

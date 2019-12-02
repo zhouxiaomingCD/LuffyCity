@@ -4,6 +4,5 @@ from AliPay.views import AliPayView, PayHandlerView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^pay$', AliPayView.as_view()),
-    url(r'^alipay_handler', PayHandlerView.as_view()),
+
 ]
